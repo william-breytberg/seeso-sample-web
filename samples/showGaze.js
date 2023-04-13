@@ -7,6 +7,7 @@ function showGazeInfoOnDom (gazeInfo) {
     gazeInfoDiv.innerText = `Gaze Information Below
                            \nx: ${gazeInfo.x}
                            \ny: ${gazeInfo.y}
+                           \ntracking: ${gazeInfo.trackingStatus}
                            `
 }
 
