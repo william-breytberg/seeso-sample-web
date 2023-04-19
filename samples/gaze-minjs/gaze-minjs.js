@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime';
 import showGaze from "../showGaze";
 
 // min js
-import EasySeeSo from '../../seeso-minjs/easy-seeso';
+//import EasySeeSo from '../seeso-minjs/easy-seeso';
 
 const licenseKey = 'dev_ae171a1si0eryn930qa5hdu53j1q9t01zgkp41pj'; // Issue license key! -> https://console.seeso.io
 

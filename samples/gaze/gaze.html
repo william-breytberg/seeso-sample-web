@@ -1,15 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
-
 <head>
+  <style>
+    .container {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      width: 100%;
+      background-color: #f5f0f0;
+    }
+    p{
+      text-align: center;
+    }
+    button {
+      color: #ffffff;
+      font-weight: bolder;
+      font-size: xx-large;
+      border-color: #ffffff;
+      border-width: thick;
+      border-radius: 5% 5% 5% 5%;
+    }
+    #aaa {
+      position: relative;
+      top: 2%;
+      left: 5%;
+      height: 25%;
+      width: 40%;
+      background-color: #ffb000;
+    }
+    #bbb {
+      position: relative;
+      top: 2%;
+      left: 15%;
+      height: 25%;
+      width: 40%;
+      background-color: #785ef0;
+    }
+    #ccc {
+      position: relative;
+      top: 5%;
+      left: 5%;
+      height: 25%;
+      width: 40%;
+      background-color: #dc267f;
+    }
+    #ddd {
+      position: relative;
+      top: 5%;
+      left: 15%;
+      height: 25%;
+      width: 40%;
+      background-color: #fe6100;
+    }
+    #eee {
+      position: relative;
+      top: 10%;
+      left: 10%;
+      height: 15%;
+      width: 30%;
+      background-color: #797979;
+    }
+    #fff {
+      position: relative;
+      top: 10%;
+      left: 30%;
+      height: 15%;
+      width: 30%;
+      background-color: #797979;
+    }
+  </style>
   <meta charset="utf-8">
-  <title>SeeSo Web Sample</title>
+  <title>Page Title</title>
 </head>
-
 <body>
+  <div class="container">
+    <p style="font-size:60px;"> Question: What planet has the hottest atmosphere?</p>
+    
+  	<button type="button" id="aaa">Earth</button>
+  	<button type="button" id="bbb">Venus</button>
+  	<button type="button" id="ccc">Mars</button>
+  	<button type="button" id="ddd">Mercury</button>
+    <button type="button" id="eee">Go Home</button>
+  	<button type="button" id="fff">Skip Question</button>
+  </div>
+
   <canvas id="output" style="position: fixed;"></canvas>
   <h2 id="gazeInfo" style="text-align: center;z-index: -1"></h2>
   <script src="gaze.js"></script>
-</body>
 
+</body>
 </html>
