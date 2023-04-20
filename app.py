@@ -1,5 +1,7 @@
 from flask import Flask,render_template,url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.expression import func
+import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -13,9 +15,7 @@ class Questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(100), unique=True, nullable=False)
     correct_answer = db.Column(db.String(50), unique=True, nullable=False)
-    w1_answer = db.Column(db.String(50), unique=True, nullable=False)
-    w2_answer = db.Column(db.String(50), unique=True, nullable=False)
-    w3_answer = db.Column(db.String(50), unique=True, nullable=False)
+    wrong_answer = db.Column(db.String(50), unique=True, nullable=False)
     subject = db.Column(db.String(50), unique=False, nullable=False)
     
     def repr(self):
@@ -31,7 +31,8 @@ def home():
 
 @app.route("/questions")
 def questions():
-    return render_template('quiz_page.html')
+    q_a = Questions.query.order_by(func.random()).first()
+    return render_template('quiz_page.html', q_a=q_a)
 
 @app.route("/instructions")
 def instructions():

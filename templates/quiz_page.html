@@ -59,11 +59,11 @@
 </head>
 <body>
   <div class="container">
-    <p style="font-size:60px;"> Question: What planet has the hottest atmosphere?</p>
+    <p style="font-size:60px;">{{q_a.question}}</p>
     
-  	<button  id="aaa">Earth</button>
+  	<button  id="aaa">{{q_a.correct_answer}}</button>
     <a href="{{ url_for('answers')}}">
-  	  <button id="bbb">Venus</button>
+  	  <button id="bbb">{{q_a.wrong_answer}}</button>
     </a>
 
     <a href="{{ url_for('instructions') }}">
