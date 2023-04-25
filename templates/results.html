@@ -6,7 +6,7 @@
 
     }
 
-    html, body {
+    html, body, button {
         font-family: Dys;
     }
 </style>
@@ -18,6 +18,13 @@
                 height: 200px;
                 width: 30%;
                 background-color: #dc267f;
+                border-radius:20px;
+            }
+            #othershit {
+                height: 200px;
+                width: 30%;
+                margin-top: 100px;
+                background-color: #26dc54;
                 border-radius:20px;
             }
         </style>
@@ -80,6 +87,9 @@
         <p><span style="font-size:44px"></span></span></p>
         <a href="{{ url_for('instructions') }}">
             <center><button type="button" id="back" style="font-size:30px;">Instructions</button></center>
+        </a>
+        <a href="{{ url_for('whatever else') }}">
+            <center><button type="button" id="othershit" style="font-size:30px;">whatever other shit</button></center>
         </a>
             
         </body>
