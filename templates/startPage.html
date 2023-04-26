@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+        font-family: 'Dys';
+        src: url('OpenDyslexic-Regular.otf');
+        } 
+        * {
+        line-height:200%;
+        color: #191A42;
+        }
+        html, body{
+            background-color: #000000;
+            font-family:Dys;
+        }
+        h1{
+            font-size: 60px;
+            font-family: 'Dys';
+            text-align: center;
+            color: #ffff;
+            background-color: transparent;
+            border: #ffff;
+            border-radius: 25px;
+            border-width: 10px;
+            border-style:solid;
+
+        }
+        table, th, td {
+            font-size: 25px;
+            font-family: 'Dys';
+            text-align: center;
+            color: #ffff;
+            background-color: transparent;
+            border: #ffff;
+            border-radius: 25px;
+            border-width: 1px;
+            border-style:solid;
+            width:100%;
+            left: 15%;
+        }
+        td{
+            background-color: #785ef0;
+        }
+        .center {
+        margin-left: auto;
+        margin-right: auto;
+        }
+        
+        button{
+            display: block;
+            font-family: 'Dys';
+            width: 30%;
+            height: 30%;
+            position: absolute;
+            top: 60%;
+            left: 35%;
+            border: black;
+            border-radius: 25px;
+            background-color: #ffb000;
+            padding: 14px 28px;
+            font-size: 60px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>WELCOME TO fEYEsh</h1>
+    <br><br>
+    <table class="center">
+        <tr>
+            <th>Purpose:</th>
+        </tr>
+        <tr>
+            <td>This project allows a user to use eye tracking as a way to continue their education in cases where user isn't able to physically interact with computer using keyboard or trackpad.</td>
+        </tr>
+    </table>
+    <button type="button" id="button">Start</button>
+    <script type="text/javascript">
+        
+        document.getElementById("button").onclick = function () {  
+            sound();
+           // location.href = "";
+        <!-- where you see the link to google https://www.google.com is where you add link you want start button to go to when it is clicked on -->
+            
+        };
+        function sound(){
+            var snd = new Audio('rclick-13693.mp3')//Sound Effect by <a href="https://pixabay.com/users/irinairinafomicheva-25140203/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=13693">irinairinafomicheva</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=13693">Pixabay</a>
+            snd.play()//plays the sound
+        }
+    </script>
+</body>
+</html>
