@@ -9,3 +9,5 @@ dist
 .DS_Store
 .venv
 virtual
+.conda
+155env

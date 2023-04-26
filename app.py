@@ -1,7 +1,8 @@
-from flask import Flask,render_template,url_for
+from flask import Flask,render_template,url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.expression import func
-import random
+from random import shuffle
+from operator import length_hint
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -11,6 +12,7 @@ db = SQLAlchemy(app)
 
 app.app_context().push()
 
+questions_tracker = []
 class Questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(100), unique=True, nullable=False)
@@ -29,22 +31,57 @@ class Questions(db.Model):
 def home():
     return render_template('homepage.html')
 
-@app.route("/questions")
+message = []
+@app.route("/questions", methods=['GET', 'POST'])
 def questions():
-    q_a = Questions.query.order_by(func.random()).first()
-    return render_template('quiz_page.html', q_a=q_a)
+    if request.method == 'POST': 
+        global results_tracker
+        option = request.form['option']
+        question = Questions.query.get(request.form['q_a_id'])
+        q_a = Questions.query.get(question.id)
+        questions_tracker.append(question.id)
+        
+        if option == question.correct_answer:
+            message.append('Correct')
+        else:
+            message.append('Incorrect')
+            
+        temp_length = length_hint(message)
+            
+        if temp_length != 1:
+            results_tracker += 1
+        else:
+            results_tracker = 0
+            
+        return redirect(url_for('.answers', message = ' '.join(message), q_a= q_a.id, results_tracker = results_tracker))
+    else:
+        q_a = Questions.query.order_by(func.random()).first()
+        options = [q_a.correct_answer, q_a.wrong_answer]
+        shuffle(options)
+        return render_template('quiz_page.html', q_a=q_a.question, q_a_id=q_a.id, option1 = options[0], option2=options[1])
 
 @app.route("/instructions")
 def instructions():
+    message.clear()
     return render_template('instructions.html')
 
 @app.route("/results")
 def results():
     return render_template('results.html')
 
-@app.route("/answers")
-def answers():
-    return render_template('answers.html')
+# had a logical error since i cannot pass list in the url https://www.programiz.com/python-programming/methods/string/join
+# I need to convert it back into a list after recieveing it
+# we need to get POST
+@app.route("/answers/<message>/<int:q_a>/<int:results_tracker>")
+def answers(message,q_a,results_tracker):
+    message = message.split()
+    q_a = Questions.query.get(q_a)
+    if ((results_tracker) == 0):
+        return render_template('answers.html', message = message, q_a = q_a, results_tracker = results_tracker)
+    elif (results_tracker < 5):
+        return render_template('answers.html', message = message, q_a = q_a, results_tracker = results_tracker)
+    else:
+        return redirect(url_for('.results'))
 
 if __name__ == "__main__":
     app.run(debug=True)
